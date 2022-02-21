@@ -1,0 +1,35 @@
+.singleProduct-container{
+    margin: 2rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+
+    @media(min-width: 1024px){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .product-image, .product-details{
+            flex: 400px;
+        }
+    }
+
+    .product-image{
+        margin: 2rem;
+    }
+
+    .product-details{
+        .name-price{
+            margin: 1rem 0;
+        }
+
+        .cart-buttons{
+            margin: 2rem 0;
+        }
+
+        .product-description{
+            p{
+                line-height: 1.5;
+            }
+        }
+    }
+}

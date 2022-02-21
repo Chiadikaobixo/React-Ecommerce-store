@@ -5,8 +5,9 @@ import HomePage from "../components/HomePage";
 import Login from "../components/Login";
 import Shop from "../components/Shop";
 import SignUp from "../components/SignUp";
-import Items from "../components/Items";
 import NotFoundPage from "../components/NotFoundPage";
+import Footer from "../components/Footer";
+import SingleProduct from "../components/SingleProduct";
 
 const AppRouter = () => (
     <BrowserRouter >
@@ -15,11 +16,12 @@ const AppRouter = () => (
             <Switch>
                 <Route path="/" component={HomePage} exact={true} />
                 <Route path="/shop" component={Shop} />
+                <Route path="/product/:id" component={SingleProduct} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={SignUp} />
-                <Route path="/Items" component={Items} />
                 <Route component={NotFoundPage} />
             </Switch>
+            <Footer />
         </div>
     </BrowserRouter>
 )

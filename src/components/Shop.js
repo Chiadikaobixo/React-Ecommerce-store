@@ -1,10 +1,9 @@
 import React from "react";
-import Items from "./Items";
+import ItemCollection from '../components/ItemCollection'
 
 const Shop = () => (
     <div>
-      <h3>Shop page</h3>
-      <Items />
+      <ItemCollection />
     </div>
 )
 

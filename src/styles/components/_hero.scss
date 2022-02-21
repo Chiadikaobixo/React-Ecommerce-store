@@ -1,11 +1,12 @@
 .hero-image {
-    background:  linear-gradient(rgba(0, 0, 0, 0.2), rgba(0,0,0,0.2)),
+    background:  linear-gradient(rgba(241, 238, 238, 0.2), rgba(250, 248, 248, 0.2)),
     url('../../assets/IMG-1247.JPG') center/cover no-repeat;
 }
 
 .hero-title{
     text-align: center;
     font-size: 2rem;
+    color: black;
 }
 
 @media(min-width: 102px) {
