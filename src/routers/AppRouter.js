@@ -8,6 +8,7 @@ import SignUp from "../components/SignUp";
 import NotFoundPage from "../components/NotFoundPage";
 import Footer from "../components/Footer";
 import SingleProduct from "../components/SingleProduct";
+import CartPage from "../components/CartPage";
 
 const AppRouter = () => (
     <BrowserRouter >
@@ -19,6 +20,7 @@ const AppRouter = () => (
                 <Route path="/product/:id" component={SingleProduct} />
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={SignUp} />
+                <Route path="/cart" component={CartPage} />
                 <Route component={NotFoundPage} />
             </Switch>
             <Footer />

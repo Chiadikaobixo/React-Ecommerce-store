@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+import { isInCart } from "../helpers";
+import { CartContext } from "../context/cartContext";
 import { ProductContext } from "../context/product-context";
 import '../styles/components/_singleProduct.scss'
 
@@ -8,6 +10,8 @@ const SingelProduct = ({ match, history: { push } }) => {
     const { products } = useContext(ProductContext)
     const { id } = match.params
     const [product, setProduct] = useState(null)
+    const { addProduct, cartItems, increaseProduct} = useContext(CartContext)
+
     useEffect(() => {
         const productItem = products.find((product) => Number(product.id) === Number(id))
         if (!productItem) {
@@ -31,16 +35,34 @@ const SingelProduct = ({ match, history: { push } }) => {
                     <p>{price}</p>
                 </div>
                 <div className="cart-buttons">
-                    <button
-                        className="button is-white shopxo-btn" id="btn-white-outline"
-                    >
-                        ADD TO CART
-                    </button>
-                    <button
-                        className="button is-black shopxo-btn" id="btn-white-outline"
-                    >
-                        CHECKOUT
-                    </button>
+                    {
+                        !isInCart(product, cartItems) &&
+                        <button
+                            className="button is-white shopxo-btn"
+                            id="btn-white-outline"
+                            onClick={() => addProduct(product)}
+                        >
+                            ADD TO CART
+                        </button>
+                    }
+                    {
+                        isInCart(product, cartItems) &&
+                        <button
+                            className="button is-white shopxo-btn"
+                            id="btn-white-outline"
+                            onClick={() => increaseProduct(product)}
+                        >
+                            ADD MORE
+                        </button>
+                    }
+                 
+                        <button
+                            className="button is-black shopxo-btn"
+                            id="btn-white-outline"
+                        >
+                            CHECKOUT
+                        </button>
+                    
                 </div>
                 <div className="product-description">
                     <p>{description}</p>
