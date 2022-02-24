@@ -9,6 +9,8 @@ import NotFoundPage from "../components/NotFoundPage";
 import Footer from "../components/Footer";
 import SingleProduct from "../components/SingleProduct";
 import CartPage from "../components/CartPage";
+import CheckoutPage from "../components/CheckoutPage";
+import AddProductForm from "../components/AddProductForm"
 
 const AppRouter = () => (
     <BrowserRouter >
@@ -21,6 +23,8 @@ const AppRouter = () => (
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={SignUp} />
                 <Route path="/cart" component={CartPage} />
+                <Route path="/checkout" component={CheckoutPage} />
+                <Route path="/addproduct" component={AddProductForm} />
                 <Route component={NotFoundPage} />
             </Switch>
             <Footer />

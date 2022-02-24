@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { CartContext } from "../context/cartContext";
 import CartItem from "./CartItem";
+import Total from "./Total";
 import '../styles/components/_cartPage.scss'
 
 const CartPage = () => {
     const { cartItems, itemCount, total } = useContext(CartContext)
+
+    
     return (
         <div>
             <h1>Cart item</h1>
@@ -14,9 +17,10 @@ const CartPage = () => {
                         <div className="cart-page">
                             <div className="cart-item-container">
                                 {
-                                    cartItems.map(item => <CartItem {...item} key={item.id} />)
+                                    cartItems.map(item => <CartItem {...item} key={item.id}/>)
                                 }
                             </div>
+                            <Total itemCount={itemCount} total={total} />
                         </div>
                     </div>
             }

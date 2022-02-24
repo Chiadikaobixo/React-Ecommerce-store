@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PlusCirleIcon, TrashIcon, MinusCircleIcon } from "./Icons";
-// import '../styles/components/_cartPage.scss'
+import { CartContext } from "../context/cartContext";
 
 const CartItem = (product) => {
     const { title, imageUrl, price, quantity } = product
+
+    const { increaseProduct, decreaseProduct, deleteProduct } = useContext(CartContext)
 
     return (
         <div className="cart-item">
@@ -18,18 +20,27 @@ const CartItem = (product) => {
                 <p>{`Quantity: ${quantity}`}</p>
             </div>
             <div className="btns-container">
-                <button className="btn-plus">
+                <button 
+                className="btn-plus"
+                onClick={() => increaseProduct(product)}
+                >
                     <PlusCirleIcon width="20px" />
                 </button>
                 {
                     quantity === 1 &&
-                    <button className="btn-trash">
+                    <button 
+                    className="btn-trash"
+                    onClick={() => deleteProduct(product)}
+                    >
                         <TrashIcon width="20px" />
                     </button>
                 }
                 {
                     quantity > 1 &&
-                    <button className="btn-minus">
+                    <button 
+                    className="btn-minus"
+                    onClick={() => decreaseProduct(product)}
+                    >
                         <MinusCircleIcon width="20px" />
                     </button>
                 }
