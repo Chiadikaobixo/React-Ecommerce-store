@@ -10,7 +10,7 @@ const SingelProduct = ({ match, history: { push } }) => {
     const { products } = useContext(ProductContext)
     const { id } = match.params
     const [product, setProduct] = useState(null)
-    const { addProduct, cartItems, increaseProduct} = useContext(CartContext)
+    const { addCart, cartItems, increaseCart} = useContext(CartContext)
 
     useEffect(() => {
         const productItem = products.find((product) => Number(product.id) === Number(id))
@@ -40,7 +40,7 @@ const SingelProduct = ({ match, history: { push } }) => {
                         <button
                             className="button is-white shopxo-btn"
                             id="btn-white-outline"
-                            onClick={() => addProduct(product)}
+                            onClick={() => addCart(product)}
                         >
                             ADD TO CART
                         </button>
@@ -50,7 +50,7 @@ const SingelProduct = ({ match, history: { push } }) => {
                         <button
                             className="button is-white shopxo-btn"
                             id="btn-white-outline"
-                            onClick={() => increaseProduct(product)}
+                            onClick={() => increaseCart(product)}
                         >
                             ADD MORE
                         </button>

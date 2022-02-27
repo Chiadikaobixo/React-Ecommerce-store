@@ -5,7 +5,7 @@ import { CartContext } from "../context/cartContext";
 const CartItem = (product) => {
     const { title, imageUrl, price, quantity } = product
 
-    const { increaseProduct, decreaseProduct, deleteProduct } = useContext(CartContext)
+    const { increaseCart, decreaseCart, deleteCart } = useContext(CartContext)
 
     return (
         <div className="cart-item">
@@ -22,7 +22,7 @@ const CartItem = (product) => {
             <div className="btns-container">
                 <button 
                 className="btn-plus"
-                onClick={() => increaseProduct(product)}
+                onClick={() => increaseCart(product)}
                 >
                     <PlusCirleIcon width="20px" />
                 </button>
@@ -30,7 +30,7 @@ const CartItem = (product) => {
                     quantity === 1 &&
                     <button 
                     className="btn-trash"
-                    onClick={() => deleteProduct(product)}
+                    onClick={() => deleteCart(product)}
                     >
                         <TrashIcon width="20px" />
                     </button>
@@ -39,7 +39,7 @@ const CartItem = (product) => {
                     quantity > 1 &&
                     <button 
                     className="btn-minus"
-                    onClick={() => decreaseProduct(product)}
+                    onClick={() => decreaseCart(product)}
                     >
                         <MinusCircleIcon width="20px" />
                     </button>

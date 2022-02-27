@@ -1,4 +1,10 @@
+const saveCartItems = (cartItems) => {
+    const cart = cartItems.length > 0 ? cartItems : []
+    localStorage.setItem('cart', JSON.stringify(cart))
+}
+
 export const sumItems = (cartItems) => {
+    saveCartItems(cartItems)
     return {
         itemCount: cartItems.reduce((total, prod) => total + prod.quantity, 0),
         total: cartItems.reduce((total, prod) => total + (prod.price * prod.quantity), 0)
@@ -7,7 +13,7 @@ export const sumItems = (cartItems) => {
 
 const cartReducer = (state, action) => {
     switch (action.type) {
-        case 'ADD_PRODUCT':
+        case 'ADD_CART':
             if (!state.cartItems.find(item => item.id === action.payload.id)) {
                 state.cartItems.push({
                     ...action.payload,
@@ -19,7 +25,7 @@ const cartReducer = (state, action) => {
                 cartItems: [...state.cartItems],
                 ...sumItems(state.cartItems)
             }
-        case 'INCREASE_PRODUCT':
+        case 'INCREASE_CART':
             const increaseIndex = state.cartItems.findIndex(item => item.id === action.payload.id)
             state.cartItems[increaseIndex].quantity++
             return {
@@ -28,7 +34,7 @@ const cartReducer = (state, action) => {
                 ...sumItems(state.cartItems)
             }
 
-        case 'DECREASE_PRODUCT':
+        case 'DECREASE_CART':
             const decreaseIndex = state.cartItems.findIndex(item => item.id === action.payload.id)
             state.cartItems[decreaseIndex].quantity--
             return {
@@ -37,7 +43,7 @@ const cartReducer = (state, action) => {
                 ...sumItems(state.cartItems)
             }
 
-        case 'DELETE_PRODUCT':
+        case 'DELETE_CART':
             const decreaseProduct = state.cartItems.filter(item => item.id !== action.payload.id)
             return {
                 ...state,
@@ -46,6 +52,7 @@ const cartReducer = (state, action) => {
             }
 
         case 'CLEAR_CART':
+            localStorage.removeItem('cart')
             return{
                 cartItems: [],
                 itemCount: 0,

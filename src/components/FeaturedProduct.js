@@ -9,7 +9,7 @@ const FeaturedProduct = (props) => {
  
     const product = { title, imageUrl, price, id, description } 
 
-    const { addProduct, cartItems, increaseProduct } = useContext(CartContext)
+    const { addCart, cartItems, increaseCart } = useContext(CartContext)
 
     return (
         <div className="featured-product">
@@ -27,7 +27,7 @@ const FeaturedProduct = (props) => {
                     !isInCart(product, cartItems) &&
                     <button
                         className="button is-black shopxo-btn"
-                        onClick={() => addProduct(product)}
+                        onClick={() => addCart(product)}
                     >
                         ADD TO CART
                     </button>
@@ -37,7 +37,7 @@ const FeaturedProduct = (props) => {
                     <button
                         className="button is-white shopxo-btn"
                         id="btn-white-outline"
-                        onClick={() => increaseProduct(product)}
+                        onClick={() => increaseCart(product)}
                     >
                         ADD MORE
                     </button>

@@ -3,8 +3,11 @@ import cartReducer from "./cartReducer";
 
 export const CartContext = React.createContext()
 
+const cartFromLocalStorage = localStorage.getItem('cart') ? 
+    JSON.parse(localStorage.getItem('cart')) : []
+
 const initailState = {
-    cartItems: [],
+    cartItems: cartFromLocalStorage,
     itemCount: 0,
     total: 0
 }
@@ -12,23 +15,23 @@ const initailState = {
 const CartContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(cartReducer, initailState)
 
-    const addProduct = (product) => dispatch({
-        type: 'ADD_PRODUCT',
+    const addCart = (product) => dispatch({
+        type: 'ADD_CART',
         payload: product
     })
 
-    const increaseProduct = (product) => dispatch({
-        type: 'INCREASE_PRODUCT',
+    const increaseCart = (product) => dispatch({
+        type: 'INCREASE_CART',
         payload: product
     })
 
-    const decreaseProduct = (product) => dispatch({
-        type: 'DECREASE_PRODUCT',
+    const decreaseCart = (product) => dispatch({
+        type: 'DECREASE_CART',
         payload: product
     })
 
-    const deleteProduct = (product) => dispatch({
-        type: 'DELETE_PRODUCT',
+    const deleteCart = (product) => dispatch({
+        type: 'DELETE_CART',
         payload: product
     })
     
@@ -37,10 +40,10 @@ const CartContextProvider = ({ children }) => {
     })
     const contextValue = {
         ...state,
-        addProduct,
-        increaseProduct,
-        decreaseProduct,
-        deleteProduct,
+        addCart,
+        increaseCart,
+        decreaseCart,
+        deleteCart,
         clearCart
     }
 
