@@ -15,7 +15,6 @@ const AddProductForm = ({history}) => {
     })
     
     const [file, setFile] = useState("")
-    //const { name, price, description } = product
     
     const handleSubmit = (e) => {
         e.preventDefault()

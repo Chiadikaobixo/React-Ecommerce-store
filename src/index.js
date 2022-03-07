@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from './routers/AppRouter';
 import reportWebVitals from './reportWebVitals';
-import ProductProvider from './context/product-context'
-import CartContextProvider from './context/cartContext'
-import AdminContextProvider from './context/adminContext'
+import ProductProvider from './context/product-context';
+import CartContextProvider from './context/cartContext';
+import AdminContextProvider from './context/adminContext';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY)
 
 ReactDOM.render(
   <BrowserRouter>
     <ProductProvider>
       <AdminContextProvider>
         <CartContextProvider>
-          <AppRouter />
+          <Elements stripe={stripePromise}>
+            <AppRouter />
+          </Elements>
         </CartContextProvider>
       </AdminContextProvider>
     </ProductProvider>

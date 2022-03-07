@@ -4,7 +4,6 @@ const PRODUCT_DATA = [
         title: 'plain polo',
         description: 'Gives comfort and its easy to wear',
         imageUrl: 'https://i.ibb.co/LzyPnF3/sling.png',
-        //imageUrl: '../../src/assets/IMG-1248.JPG',
         price: 15,
     },
     {

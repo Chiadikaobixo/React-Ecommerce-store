@@ -15,16 +15,7 @@ export const PlusCirleIcon = ({ width }) =>
             fillRule="evenodd">
         </path>
     </svg>
-
-// export const TrashIcon = ({ width }) =>
-//     <svg width={width} fill="currentColor" viewBox="0 0 20 20">
-//         <path
-//             d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-//             clipRule="evenodd"
-//             fillRule="evenodd">
-//         </path>
-//     </svg>
-
+    
 export const TrashIcon = ({ width }) =>
     <svg xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true" role="img" width="1em" height="1em"

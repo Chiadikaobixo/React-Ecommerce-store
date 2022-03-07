@@ -1,5 +1,5 @@
 import React, { useReducer } from "react";
-import cartReducer from "./cartReducer";
+import cartReducer, {sumItems} from "./cartReducer";
 
 export const CartContext = React.createContext()
 
@@ -8,8 +8,7 @@ const cartFromLocalStorage = localStorage.getItem('cart') ?
 
 const initailState = {
     cartItems: cartFromLocalStorage,
-    itemCount: 0,
-    total: 0
+    ...sumItems(cartFromLocalStorage)
 }
 
 const CartContextProvider = ({ children }) => {
