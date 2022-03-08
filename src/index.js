@@ -6,8 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import ProductProvider from './context/product-context';
 import CartContextProvider from './context/cartContext';
 import AdminContextProvider from './context/adminContext';
+import UserContextProvider from './context/userContext';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+
 
 const stripePromise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY)
 
@@ -17,7 +19,9 @@ ReactDOM.render(
       <AdminContextProvider>
         <CartContextProvider>
           <Elements stripe={stripePromise}>
-            <AppRouter />
+            <UserContextProvider>
+              <AppRouter />
+            </UserContextProvider>
           </Elements>
         </CartContextProvider>
       </AdminContextProvider>
