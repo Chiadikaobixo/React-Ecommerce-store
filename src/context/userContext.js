@@ -12,7 +12,7 @@ const UserContextProvider = ({ children }) => {
             if(userAuth){
                 const userRef = await createUserProfileDocument(userAuth)
 
-                userRef.snapShot(snapShot => {
+                userRef.onSnapshot(snapShot => {
                     setUser({
                         id: snapShot.id,
                         ...snapShot.data()
@@ -25,8 +25,9 @@ const UserContextProvider = ({ children }) => {
             }
         })
         return () => unsubscribeFromAuth()
-    })
+    }, [])
     const contextValue = { user, loading}
+    if(loading){ return <div>loading...</div>}
 
     return(
         <UserContext.Provider value={contextValue}>
