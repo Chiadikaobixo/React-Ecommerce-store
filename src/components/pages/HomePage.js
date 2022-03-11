@@ -1,7 +1,7 @@
 import React from "react";
-import Hero from "./Hero";
-import Section from "./Section";
-import '../App.scss'
+import Hero from "../Hero";
+import Section from "../Section";
+import '../../App.scss'
 
 const HomePage = () => (
     <div className="App">

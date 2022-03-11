@@ -3,7 +3,7 @@ import { CartContext } from "../../context/cartContext";
 import { withRouter } from "react-router-dom"
 
 
-const Success = ({ history }) => {
+const SuccessPage = ({ history }) => {
     const { clearCart } = useContext(CartContext)
     useEffect(clearCart, [])
     
@@ -25,4 +25,4 @@ const Success = ({ history }) => {
     )
 }
 
-export default withRouter(Success)
+export default withRouter(SuccessPage)

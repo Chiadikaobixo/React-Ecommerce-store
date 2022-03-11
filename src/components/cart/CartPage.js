@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { CartContext } from "../context/cartContext";
+import { CartContext } from "../../context/cartContext";
 import CartItem from "./CartItem";
 import Total from "./Total";
-import '../styles/components/_cartPage.scss'
+import '../../styles/components/_cartPage.scss'
 
 const CartPage = () => {
     const { cartItems, itemCount, total } = useContext(CartContext)

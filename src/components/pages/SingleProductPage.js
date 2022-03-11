@@ -1,12 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
-import { isInCart } from "../helpers";
-import { CartContext } from "../context/cartContext";
-import { ProductContext } from "../context/product-context";
-import '../styles/components/_singleProduct.scss'
+import { isInCart } from "../../helpers";
+import { CartContext } from "../../context/cartContext";
+import { ProductContext } from "../../context/product-context";
+import '../../styles/components/_singleProduct.scss'
 
 
-const SingelProduct = ({ match, history: { push } }) => {
+const SingelProductPage = ({ match, history: { push } }) => {
     const { products } = useContext(ProductContext)
     const { id } = match.params
     const [product, setProduct] = useState(null)
@@ -72,4 +72,4 @@ const SingelProduct = ({ match, history: { push } }) => {
     )
 }
 
-export default withRouter(SingelProduct)
+export default withRouter(SingelProductPage)

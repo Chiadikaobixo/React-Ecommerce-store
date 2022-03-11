@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { withRouter } from "react-router-dom";
-import { CartContext } from "../context/cartContext";
-import '../styles/components/_cartPage.scss'
+import { CartContext } from "../../context/cartContext";
+import '../../styles/components/_cartPage.scss'
 
 const Total = ({ itemCount, total, history }) => {
    

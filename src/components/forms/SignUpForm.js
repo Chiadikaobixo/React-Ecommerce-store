@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { auth, createUserProfileDocument } from "../firebase/firebase";
+import { auth, createUserProfileDocument } from "../../firebase/firebase";
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom"

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import cartIcon from '../assets/IMG-1243.JPG'
-import { CartContext } from "../context/cartContext";
+import cartIcon from '../../assets/IMG-1243.JPG'
+import { CartContext } from "../../context/cartContext";
 import { withRouter } from "react-router-dom";
-import '../styles/components/_cartIcon.scss'
+import '../../styles/components/_cartIcon.scss'
 
 const CartIcon = ({history}) => {
     const { itemCount } = useContext(CartContext)

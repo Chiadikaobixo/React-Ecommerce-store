@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-const Canceled = ({ history }) => (
+const CanceledPage = ({ history }) => (
     <div className="checkout">
         <h1>Payment failed</h1>
         <p>Payment was not Successfull</p>
@@ -16,4 +16,4 @@ const Canceled = ({ history }) => (
     </div>
 )
 
-export default withRouter(Canceled)
+export default withRouter(CanceledPage)

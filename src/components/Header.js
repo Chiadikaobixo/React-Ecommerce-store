@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from 'react-router-dom'
 import { auth } from "../firebase/firebase";
 import { UserContext } from "../context/userContext";
-import CartIcon from "./CartIcon";
+import CartIcon from "./cart/CartIcon";
 import '../styles/components/_header.scss'
 
 const Header = () => {

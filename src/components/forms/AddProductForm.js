@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ImagePicker } from 'react-file-picker'
-import { AdminContext } from "../context/adminContext";
+import { AdminContext } from "../../context/adminContext";
 import { withRouter } from "react-router-dom";
 
 

@@ -1,18 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from "../components/Header";
-import HomePage from "../components/HomePage";
-import Login from "../components/Login";
-import Shop from "../components/Shop";
-import SignUp from "../components/SignUp";
-import NotFoundPage from "../components/NotFoundPage";
+import HomePage from "../components/pages/HomePage";
+import LoginPage from "../components/pages/LoginPage";
+import ShopPage from "../components/pages/ShopPage";
+import SignUpPage from "../components/pages/SignUpPage";
+import NotFoundPage from "../components/pages/NotFoundPage";
 import Footer from "../components/Footer";
-import SingleProduct from "../components/SingleProduct";
-import CartPage from "../components/CartPage";
-import CheckoutPage from "../components/Stripe/CheckoutPage";
-import AddProductForm from "../components/AddProductForm"
-import Success from "../components/Stripe/Success";
-import Canceled from "../components/Stripe/Canceled";
+import SingleProductPage from "../components/pages/SingleProductPage";
+import CartPage from "../components/cart/CartPage";
+import CheckoutPage from "../components/pages/CheckoutPage";
+import AddProductForm from "../components/forms/AddProductForm"
+import SuccessPage from "../components/pages/SuccessPage";
+import CanceledPage from "../components/pages/CanceledPage";
 
 const AppRouter = () => (
     <BrowserRouter >
@@ -20,15 +20,15 @@ const AppRouter = () => (
         <Header />
             <Switch>
                 <Route path="/" component={HomePage} exact={true} />
-                <Route path="/shop" component={Shop} />
-                <Route path="/product/:id" component={SingleProduct} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={SignUp} />
+                <Route path="/shop" component={ShopPage} />
+                <Route path="/product/:id" component={SingleProductPage} />
+                <Route path="/login" component={LoginPage} />
+                <Route path="/signup" component={SignUpPage} />
                 <Route path="/cart" component={CartPage} />
                 <Route path="/checkout" component={CheckoutPage} />
                 <Route path="/addproduct" component={AddProductForm} />
-                <Route path="/success" component={Success} />
-                <Route path="/canceled" component={Canceled} />
+                <Route path="/success" component={SuccessPage} />
+                <Route path="/canceled" component={CanceledPage} />
                 <Route component={NotFoundPage} />
             </Switch>
             <Footer />
