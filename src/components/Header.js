@@ -18,7 +18,7 @@ const Header = () => {
           {
             !user ?
               <li><Link to="/login" >Login</Link></li> :
-              <li><Link onClick={() => auth.signOut()}>Logout</Link></li>
+              <li onClick={() => auth.signOut()}>Logout</li>
           }
           {
             !user &&

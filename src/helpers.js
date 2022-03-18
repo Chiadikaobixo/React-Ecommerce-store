@@ -1,12 +1,14 @@
 import { auth } from "./firebase/firebase"
 
+
 export const isInCart = (product, cartItems) => {
     return cartItems.find(item => item.id === product.id)
 }
 
 const API = 'http://localhost:8080'
 
-export const FetchFromAPI = async(endpoint, opts) => {
+
+export const fetchFromAPI = async(endpoint, opts) => {
     const {method, body} = {method: 'POST', body: null, ...opts}
     const user = auth.currentUser
     const token = user && (await user.getIdToken())
@@ -23,5 +25,4 @@ export const FetchFromAPI = async(endpoint, opts) => {
     }else{
         throw new Error(res.statusText)
     }
-    
 }
