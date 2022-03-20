@@ -1,100 +1,101 @@
-import React, { useState } from "react";
-import { auth, createUserProfileDocument } from "../../firebase/firebase";
-import { Formik } from 'formik'
-import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom"
+import React, { useState } from 'react';
+import { Formik } from 'formik';
+import { auth, createUserProfileDocument } from '../../firebase/firebase';
+import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-
-const validate = (values) => {
-    const errors = {}
+const validate = values => {
+    const errors = {};
     if (!values.email) {
-        errors.email = 'Required'
+        errors.email = 'Required';
     } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
+        errors.email = 'Invalid email address';
     }
-    if (!values.name) { errors.name = 'Required' }
+    if (!values.firstname) { errors.firstname = 'Required' }
     if (!values.password) { errors.password = 'Required' }
+    return errors;
 }
 
-
-const SignUpForm = ({ history }) => {
-    const [error, setError] = useState(null)
+const SignUpForm = ({ history: { push } }) => {
+    const [error, setError] = useState(null);
     const initialValues = {
-        firstName: "",
-        email: "",
-        password: ""
+        firstname: '',
+        email: '',
+        password: '',
     }
 
     const handleSignUp = async (values, { setSubmitting }) => {
-        const { firstName, email, password } = values
+        const { firstname, email, password } = values;
+
         try {
             const { user } = await auth.createUserWithEmailAndPassword(email, password)
-            await createUserProfileDocument(user, { displayName: firstName })
-            history.push('/shop')
-            setSubmitting(false)
+            await createUserProfileDocument(user, { displayName: firstname });
+            push('/shop');
+            setSubmitting(false);
         } catch (error) {
-            console.log(error)
-            setSubmitting(false)
-            setError(error)
+            console.log('error', error);
+            setSubmitting(false);
+            setError(error);
         }
     }
 
     return (
-        <div className="sign-up">
+        <div className='sign-up'>
             <h1>Sign Up</h1>
-            <div className="form-container">
+            <div className='form-container'>
                 <Formik
                     initialValues={initialValues}
                     validate={validate}
                     onSubmit={handleSignUp}
                 >
                     {
-                        ({values, errors, handleSubmit, handleChange, isSubmitting }) => {
-                            const { firstName, email, password } = errors
+                        ({ values, errors, handleChange, handleSubmit, isSubmitting }) => {
+                            const { firstname, email, password } = errors;
                             return (
                                 <form onSubmit={handleSubmit}>
                                     <div>
                                         <input
-                                            type="text"
-                                            name="firstName"
-                                            placeholder="fullname"
-                                            autoFocus
-                                            className={"shopxo-input" + (firstName ? 'error' : '')}
-                                            value={values.firstName}
+                                            type='text'
+                                            name='firstname'
                                             onChange={handleChange}
+                                            value={values.firstname}
+                                            placeholder='First Name'
+                                            className={'shopxo-input ' + (firstname ? 'error' : '')}
                                         />
                                     </div>
                                     <div>
                                         <input
-                                            type="email"
-                                            name="email"
-                                            placeholder="email"
-                                            className={"shopxo-input" + (email ? 'error' : '')}
-                                            label="email"
+                                            type='email'
+                                            name='email'
+                                            onChange={handleChange}
                                             value={values.email}
-                                            onChange={handleChange}
+                                            placeholder='Email'
+                                            className={'shopxo-input ' + (email ? 'error' : '')}
                                         />
                                     </div>
                                     <div>
                                         <input
-                                            type="password"
-                                            name="password"
-                                            placeholder="password"
-                                            className={"shopxo-input" + (password ? 'error' : '')}
-                                            label="password"
-                                            value={values.password}
+                                            type='password'
+                                            name='password'
                                             onChange={handleChange}
+                                            value={values.password}
+                                            placeholder='Password'
+                                            className={'shopxo-input ' + (password ? 'error' : '')}
                                         />
                                     </div>
-                                    <div className="submit-btn">
+                                    <div className='submit-btn'>
                                         <button
-                                            type="submit"
-                                            disabled= {isSubmitting}
-                                            className="button is-black shopxo-btn submit"
-                                        >Submit</button>
+                                            type='submit'
+                                            disabled={isSubmitting}
+                                            className='button is-black shopxo-btn submit'
+                                        >
+                                            Sign Up
+                                        </button>
                                     </div>
-                                    <div className="error-message">
-                                        {error && <p>{error.message}</p>}
+                                    <div className='error-message'>
+                                        {
+                                            error && <p>Email address already exist</p>
+                                        }
                                     </div>
                                     <div>
                                         <p>
@@ -105,12 +106,13 @@ const SignUpForm = ({ history }) => {
                                         </p>
                                     </div>
                                 </form>
-                            )
+                            );
                         }
                     }
                 </Formik>
             </div>
         </div>
-    )
+    );
 }
-export default withRouter(SignUpForm)
+
+export default withRouter(SignUpForm);
