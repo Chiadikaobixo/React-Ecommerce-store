@@ -1,11 +1,11 @@
 import React from "react";
-import Hero from "../Hero";
 import Section from "../Section";
 import '../../App.scss'
+import ShowCaseContainer from "../showCase/ShowCaseContainer";
 
 const HomePage = () => (
     <div className="App">
-        <Hero />
+        <ShowCaseContainer />
         <Section />
     </div>
 )
